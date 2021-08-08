@@ -8,6 +8,7 @@ import { useGlobalDOMEvents, resetFocus } from "./events";
 
 import { Home } from "./views/Home";
 import { Credits } from "./views/Credits";
+import { Guilds } from "./views/Guilds";
 
 function App() {
 	useGlobalDOMEvents();
@@ -20,7 +21,9 @@ function App() {
 
 	return (
 		<Switch>
-			<Route path="/guilds">Guilds page</Route>
+			<Route path="/guilds">
+				<Guilds />
+			</Route>
 			<Route path="/dms">DMs page</Route>
 			<Route path="/settings">Settings page</Route>
 			<Route path="/credits">
