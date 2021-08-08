@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useGlobalDOMEvents, resetFocus } from "./events";
 
 import { Home } from "./views/Home";
+import { Credits } from "./views/Credits";
 
 function App() {
 	useGlobalDOMEvents();
@@ -22,6 +23,9 @@ function App() {
 			<Route path="/guilds">Guilds page</Route>
 			<Route path="/dms">DMs page</Route>
 			<Route path="/settings">Settings page</Route>
+			<Route path="/credits">
+				<Credits />
+			</Route>
 			<Route path="/">
 				<Home />
 			</Route>

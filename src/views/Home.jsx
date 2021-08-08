@@ -1,31 +1,30 @@
 
-import { ListItem } from "../components/ListItem";
+import { ListItemWithArrow } from "../components/ListItem";
 import { List } from "../components/List";
-
-import SVG from "react-inlinesvg";
 
 export function Home() {
 	return (
 		<div>
 			<List title="Chat">
-				<ListItem to="/dms">
-					<span>Dms</span>
-					<SVG src="/icons/chevron-right.svg" />
-				</ListItem>
-				<ListItem to="/guilds">
-					<span>Guilds</span>
-					<SVG src="/icons/chevron-right.svg" />
-				</ListItem>
+				<ListItemWithArrow img="/silk/icons/comment.png" to="/dms">
+					Dms
+				</ListItemWithArrow>
+				<ListItemWithArrow img="/silk/icons/application.png" to="/guilds">
+					Guilds
+				</ListItemWithArrow>
 			</List>
 			<List title="Appearance">
-				<ListItem to="/settings/theme">
-					<span>Color theme</span>
-					<SVG src="/icons/chevron-right.svg" />
-				</ListItem>
-				<ListItem to="/settings/theme">
-					<span>Compact display</span>
-					<SVG src="/icons/chevron-right.svg" />
-				</ListItem>
+				<ListItemWithArrow img="/silk/icons/palette.png" to="/settings/theme">
+					Color Theme
+				</ListItemWithArrow>
+				<ListItemWithArrow img="/silk/icons/page_white_text_width.png" to="/settings/theme">
+					Compact display
+				</ListItemWithArrow>
+			</List>
+			<List title="Other">
+				<ListItemWithArrow img="/silk/icons/page_white_camera.png" to="/credits">
+					Credits
+				</ListItemWithArrow>
 			</List>
 		</div>
 	)
