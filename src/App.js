@@ -1,23 +1,31 @@
+/* eslint-disable no-restricted-globals */
 import "./App.css";
 
-import { useGlobalDOMEvents } from "./events";
+import { Switch, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
-import { HashRouter, Switch, Route } from "react-router-dom";
+import { useGlobalDOMEvents, resetFocus } from "./events";
 
 import { Home } from "./views/Home";
 
 function App() {
 	useGlobalDOMEvents();
 
+	let location = useLocation();
+	useEffect(() => {
+		// On route change, re-set the focused element to 0,0
+		resetFocus();
+	}, [location]);
+
 	return (
-		<HashRouter>
-			<Switch>
-				<Route path="/guilds">HOI!</Route>
-				<Route path="/">
-					<Home />
-				</Route>
-			</Switch>
-		</HashRouter>
+		<Switch>
+			<Route path="/guilds">Guilds page</Route>
+			<Route path="/dms">DMs page</Route>
+			<Route path="/settings">Settings page</Route>
+			<Route path="/">
+				<Home />
+			</Route>
+		</Switch>
 	);
 }
 

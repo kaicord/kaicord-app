@@ -1,6 +1,7 @@
+/* eslint-disable no-restricted-globals */
 import { useEffect } from "react";
 
-let focusedRow = -1;
+let focusedRow = 0;
 let focusedCol = 0;
 
 function onKeyDown(evt) {
@@ -14,8 +15,13 @@ function onKeyDown(evt) {
 		updateFocus();
 	} else if (evt.key === "Backspace") {
 		evt.preventDefault();
-		// eslint-disable-next-line no-restricted-globals
+		let loc = location.href;
+
 		history.back();
+
+		if (loc === location.href) {
+			window.close();
+		}
 	}
 }
 
@@ -33,18 +39,28 @@ function updateFocus() {
 	const focusRow = focusRows[focusedRow % focusRows.length];
 
 	// Find focused column
-	const focusCols = focusRow.querySelectorAll("[tabcol]");
-	while (focusedCol < 0) focusedCol = focusCols.length + focusedCol;
-	const focusCol = focusCols[focusedCol % focusCols.length];
+	if (focusRow) {
+		const focusCols = focusRow.querySelectorAll("[tabcol]");
+		while (focusedCol < 0) focusedCol = focusCols.length + focusedCol;
+		const focusCol = focusCols[focusedCol % focusCols.length];
 
-	// Focus on column
-	if (focusCol) focusCol.focus();
+		// Focus on column
+		if (focusCol) focusCol.focus();
+	}
+}
+
+export function resetFocus() {
+	focusedCol = 0;
+	focusedRow = 0;
+	updateFocus();
 }
 
 export function useGlobalDOMEvents() {
 	useEffect(() => {
 		window.addEventListener("keydown", onKeyDown);
 		window.addEventListener("keyup", onKeyUp);
+
+		updateFocus();
 
 		return () => {
 			window.removeEventListener("keydown", onKeyDown);

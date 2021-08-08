@@ -8,21 +8,21 @@ export function Home() {
 	return (
 		<div>
 			<List title="Chat">
-				<ListItem>
+				<ListItem to="/dms">
 					<span>Dms</span>
 					<SVG src="/icons/chevron-right.svg" />
 				</ListItem>
-				<ListItem>
+				<ListItem to="/guilds">
 					<span>Guilds</span>
 					<SVG src="/icons/chevron-right.svg" />
 				</ListItem>
 			</List>
 			<List title="Appearance">
-				<ListItem>
+				<ListItem to="/settings/theme">
 					<span>Color theme</span>
 					<SVG src="/icons/chevron-right.svg" />
 				</ListItem>
-				<ListItem>
+				<ListItem to="/settings/theme">
 					<span>Compact display</span>
 					<SVG src="/icons/chevron-right.svg" />
 				</ListItem>
