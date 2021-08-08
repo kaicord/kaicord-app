@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  --body: black;
+  --text: white;
+  --glow: #2c2c2c;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  background: var(--body);
+  color: var(--text);
+}
+
+svg {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+}
+
+*:focus {
+  background: linear-gradient(to bottom right, var(--body), var(--glow));
+  outline: none;
+}
