@@ -5,6 +5,10 @@ let focusedRow = 0;
 let focusedCol = 0;
 
 function onKeyDown(evt) {
+	if (evt.key === "ArrowDown" || evt.key === "ArrowUp") {
+		evt.preventDefault();
+	}
+
 	if (evt.key === "ArrowDown") {
 		focusedCol = 0;
 		focusedRow++;
@@ -45,7 +49,10 @@ function updateFocus() {
 		const focusCol = focusCols[focusedCol % focusCols.length];
 
 		// Focus on column
-		if (focusCol) focusCol.focus();
+		if (focusCol) {
+			focusCol.focus();
+			focusCol.scrollIntoView({ behavior: "smooth", block: "center" });
+		}
 	}
 }
 
