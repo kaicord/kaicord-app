@@ -26,7 +26,7 @@ export function Guilds() {
 			<List title="Your guilds">
 				{guildNames.map(name => {
 					return (
-						<ListItemWithArrow key={name} img="https://cdn.discordapp.com/icons/679090685680418829/bdaccece3c1834363e3a5c70a099096c.webp?size=16">
+						<ListItemWithArrow to="#" key={name} img="https://i.imgur.com/QvlxvGc.png">
 							<div>
 								<p>{name}</p>
 							</div>

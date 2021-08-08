@@ -51,7 +51,16 @@ function updateFocus() {
 		// Focus on column
 		if (focusCol) {
 			focusCol.focus();
-			focusCol.scrollIntoView({ behavior: "smooth", block: "center" });
+
+			const rect = focusCol.getBoundingClientRect();
+			const elY =
+				rect.top - document.body.getBoundingClientRect().top + rect.height / 2;
+
+			window.scrollTo({
+				left: 0,
+				top: elY - window.innerHeight / 2,
+				behavior: "smooth",
+			});
 		}
 	}
 }
