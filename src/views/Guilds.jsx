@@ -15,7 +15,10 @@ export function Guilds() {
 		"Code()",
 		"Yoglin Corp",
 		"Spotistats for Spotify",
-		"PvP Legacy"
+		"PvP Legacy",
+		"Tank Tactics",
+		"Eta Mail",
+		"Ouwe osso zn Jip"
 	]
 
 	return (
@@ -23,7 +26,7 @@ export function Guilds() {
 			<List title="Your guilds">
 				{guildNames.map(name => {
 					return (
-						<ListItemWithArrow img="https://cdn.discordapp.com/icons/679090685680418829/bdaccece3c1834363e3a5c70a099096c.webp?size=16" to="https://jipfr.nl">
+						<ListItemWithArrow key={name} img="https://cdn.discordapp.com/icons/679090685680418829/bdaccece3c1834363e3a5c70a099096c.webp?size=16">
 							<div>
 								<p>{name}</p>
 							</div>
