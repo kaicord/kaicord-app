@@ -10,6 +10,7 @@ import { Home } from "./views/Home";
 import { Credits } from "./views/Credits";
 import { Guilds } from "./views/Guilds";
 import { Channel } from "./views/Channel";
+import { DMs } from "./views/DMs";
 
 // import * as test from "./concord";
 
@@ -28,14 +29,17 @@ function App() {
 			<Route path="/guilds">
 				<Guilds />
 			</Route>
-			<Route path="/dms">DMs page</Route>
-			<Route path="/settings">Settings page</Route>
+			<Route path="/dms">
+				hallo
+				<DMs />
+			</Route>
 			<Route path="/channel/:id">
 				<Channel />
 			</Route>
 			<Route path="/credits">
 				<Credits />
 			</Route>
+			<Route path="/settings">Settings page</Route>
 			<Route path="/">
 				<Home />
 			</Route>
