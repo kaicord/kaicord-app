@@ -11,5 +11,11 @@
 	"developer": {
 		"name": "Jip Frijlink",
 		"url": "http://jipfr.nl"
+	},
+	"type": "privileged",
+	"permissions": {
+		"systemXHR": {
+			"description": "This permission is require to call Discord API"
+		}
 	}
 }

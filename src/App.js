@@ -10,10 +10,28 @@ import { Home } from "./views/Home";
 import { Credits } from "./views/Credits";
 import { Guilds } from "./views/Guilds";
 
+// import * as test from "./concord";
+
 function App() {
 	useGlobalDOMEvents();
 
+	// var xhttp = new XMLHttpRequest({ mozSystem: true });
+	// xhttp.onreadystatechange = function () {
+	// 	console.log(`${this.readyState} ${this.status}`);
+	// 	if (this.readyState === 4 && this.status === 200) {
+	// 		// Typical action to be performed when the document is ready:
+	// 		alert(xhttp.responseText);
+	// 	}
+	// };
+	// xhttp.open("GET", "https://jipfr.nl", true);
+	// xhttp.send();
+	console.log(2);
+
+	// alert(1);
+	// console.log(test);
+
 	let location = useLocation();
+
 	useEffect(() => {
 		// On route change, re-set the focused element to 0,0
 		resetFocus();
