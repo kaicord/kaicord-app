@@ -26,6 +26,12 @@ export function Credits() {
 						<p>The wonderful 16x16 icons used</p>
 					</div>
 				</ListItemWithArrow>
+				<ListItemWithArrow img="https://feathericons.com/favicon.ico" to="https://feathericons.com/">
+					<div className="normal-case">
+						<strong>FeatherIcons</strong>
+						<p>General-purpose SVG icons</p>
+					</div>
+				</ListItemWithArrow>
 			</List>
 		</div>
 	)
