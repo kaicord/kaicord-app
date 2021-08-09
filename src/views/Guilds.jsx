@@ -26,7 +26,7 @@ export function Guilds() {
 			<List title="Your guilds">
 				{guildNames.map(name => {
 					return (
-						<ListItemWithArrow to="#" key={name} img="https://i.imgur.com/QvlxvGc.png">
+						<ListItemWithArrow to="/channel/whatever" key={name} img="https://i.imgur.com/QvlxvGc.png">
 							<div>
 								<p>{name}</p>
 							</div>

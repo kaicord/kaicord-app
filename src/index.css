@@ -22,7 +22,7 @@ svg {
   height: 1rem;
 }
 
-*:focus {
+.focus {
   background: linear-gradient(to bottom right, var(--body), var(--glow));
   outline: none;
 }

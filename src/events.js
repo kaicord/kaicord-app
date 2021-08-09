@@ -37,6 +37,10 @@ function onKeyUp() {}
  * and you have cols you can navigate with left/right
  */
 function updateFocus() {
+	document
+		.querySelectorAll(".focus")
+		.forEach((el) => el.classList.remove("focus"));
+
 	// Find relevant focused row
 	const focusRows = document.querySelectorAll("[tabrow]");
 	while (focusedRow < 0) focusedRow = focusRows.length + focusedRow;
@@ -51,6 +55,7 @@ function updateFocus() {
 		// Focus on column
 		if (focusCol) {
 			focusCol.focus();
+			focusCol.classList.add("focus");
 
 			const rect = focusCol.getBoundingClientRect();
 			const elY =
@@ -67,7 +72,11 @@ function updateFocus() {
 
 export function resetFocus() {
 	focusedCol = 0;
-	focusedRow = 0;
+	if (location.href.includes("/channel/")) {
+		focusedRow = document.querySelectorAll(".is-message").length - 1;
+	} else {
+		focusedRow = 0;
+	}
 	updateFocus();
 }
 
