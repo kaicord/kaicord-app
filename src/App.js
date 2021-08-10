@@ -30,7 +30,6 @@ function App() {
 				<Guilds />
 			</Route>
 			<Route path="/dms">
-				hallo
 				<DMs />
 			</Route>
 			<Route path="/channel/:id">
