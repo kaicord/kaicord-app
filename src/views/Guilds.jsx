@@ -2,7 +2,7 @@
 import { ListItemWithArrow } from "../components/ListItem";
 import { List } from "../components/List";
 
-export function Guilds() {
+export function Guilds(props) {
 
 	const guildNames = [
 		"movie-web",
@@ -20,15 +20,17 @@ export function Guilds() {
 		"Eta Mail",
 		"Ouwe osso zn Jip"
 	]
+	console.log(props.groups)
 
 	return (
 		<div>
+			{JSON.stringify(Object.keys(props.groups))}
 			<List title="Your guilds">
-				{guildNames.map(name => {
+				{props.groups.map(guild => {
 					return (
-						<ListItemWithArrow to="/channel/whatever" key={name} img="https://i.imgur.com/QvlxvGc.png">
+						<ListItemWithArrow to="/channel/whatever" key={guild.getID()} img={guild.getIconUrl()}>
 							<div>
-								<p>{name}</p>
+								<p>{guild.getName()}</p>
 							</div>
 						</ListItemWithArrow>
 					)
