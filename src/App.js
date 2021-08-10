@@ -38,7 +38,7 @@ function App() {
 		});
 
 		client.onMessageCreate((message) => {
-			console.log(3);
+			// console.log(3);
 			// a new message has been sent
 		});
 
