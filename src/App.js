@@ -25,69 +25,10 @@ console.log(123);
 
 function App() {
 	console.log("Running app");
-	// const xhr = new XMLHttpRequest({ mozSystem: true });
-	// xhr.addEventListener("load", function () {
-	// 	const response = {
-	// 		status: xhr.status,
-	// 		body: xhr.responseText,
-	// 		json: JSON.parse(xhr.responseText),
-	// 	};
-	// 	console.log(response);
-	// });
-
-	// xhr.onreadystatechange = () => {
-	// 	// console.log(xhr, xhr.statusCode, Date.now());
-	// 	// console.log(xhr.responseText)
-	// 	// console.log('--------')
-	// 	console.log(xhr.responseText);
-	// };
-
-	// xhr.open("POST", `https://jsonplaceholder.typicode.com/todos/1`);
-	// xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-	// xhr.send();
 
 	const [accountData, setAccountData] = useState(false);
 	useEffect(() => {
 		console.log("R");
-
-		// new Promise((resolve) => {
-		// 	const xhr = new XMLHttpRequest({ mozSystem: true });
-		// 	xhr.addEventListener("load", function () {
-		// 		const response = {
-		// 			status: xhr.status,
-		// 			body: xhr.responseText,
-		// 			json: JSON.parse(xhr.responseText),
-		// 		};
-		// 		resolve(response);
-		// 	});
-
-		// 	xhr.onreadystatechange = () => {
-		// 		// console.log(xhr, xhr.statusCode, Date.now());
-		// 		// console.log(xhr.responseText)
-		// 		// console.log('--------')
-		// 		if (xhr.readyState === 4) {
-		// 			console.log(xhr);
-		// 		}
-		// 	};
-
-		// 	const verb = "GET";
-		// 	const data = null;
-
-		// 	xhr.open(verb, "https://jipfr.nl");
-		// 	xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-		// 	const options = {};
-
-		// 	if (options.headers) {
-		// 		for (const key in options.headers) {
-		// 			if (Object.hasOwnProperty.call(options.headers, key)) {
-		// 				xhr.setRequestHeader(key, options.headers[key]);
-		// 			}
-		// 		}
-		// 	}
-		// 	console.log(verb, `https://jipfr.nl`, data);
-		// 	xhr.send(data);
-		// }).then(console.log);
 
 		const client = new ConcordClient();
 
