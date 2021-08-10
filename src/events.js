@@ -37,9 +37,9 @@ function onKeyUp() {}
  * and you have cols you can navigate with left/right
  */
 function updateFocus() {
-	document
-		.querySelectorAll(".focus")
-		.forEach((el) => el.classList.remove("focus"));
+	[...document.querySelectorAll(".focus")].forEach((el) =>
+		el.classList.remove("focus")
+	);
 
 	// Find relevant focused row
 	const focusRows = document.querySelectorAll("[tabrow]");
