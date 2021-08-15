@@ -15,7 +15,6 @@ export function ListItem(props) {
 			{props.children}
 		</div>
 	)
-	console.log(props.disabled)
 	if (props.to && props.to.startsWith("http") && !props.disabled) {
 		return (
 			<div tabrow="true">

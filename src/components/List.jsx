@@ -6,8 +6,6 @@ import SVG from "react-inlinesvg";
 
 export function List(props) {
 	const [open, setOpen] = useState(false);
-	console.log(props.title, props.doSpacing)
-	console.log(props.title ? '' : props.doSpacing ? 'my-3' : '')
 	return (
 		<div className={props.title ? '' : props.doSpacing ? 'my-3' : ''}>
 			{props.title ? <ListTitle collapsible={props.collapsible} open={open} setOpen={setOpen}>{props.title}</ListTitle> : ''}

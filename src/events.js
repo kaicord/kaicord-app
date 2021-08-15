@@ -60,7 +60,6 @@ function updateFocus() {
 		// Focus on selected element
 		focusCol.classList.add("focus");
 		focusCol.focus();
-		console.log(focusCol);
 
 		const rect = focusCol.getBoundingClientRect();
 		const elY =

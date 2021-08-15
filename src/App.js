@@ -35,13 +35,10 @@ function App() {
 		});
 
 		client.onMessageCreate((message) => {
-			// console.log(3);
 			// a new message has been sent
 		});
 
 		client.onReady(() => {
-			console.log(client);
-			console.log(client.getAuthorizationToken());
 			localStorage.setItem("discord-token", client.getAuthorizationToken());
 			// do stuff, client is connected and logged in
 			setAccountData(client);
@@ -52,7 +49,6 @@ function App() {
 			const password = prompt("Password");
 			client.login(email, password);
 		} else {
-			console.log(5);
 			client.ghostLogin(localStorage.getItem("discord-token"));
 		}
 	}, []);
