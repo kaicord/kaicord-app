@@ -59,6 +59,7 @@ function App() {
 
 	useEffect(() => {
 		// On route change, re-set the focused element to 0,0
+		window.scrollTo(0, 0);
 		resetFocus();
 	}, [location]);
 

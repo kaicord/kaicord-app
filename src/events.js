@@ -68,7 +68,7 @@ function updateFocus() {
 		window.scrollTo({
 			left: 0,
 			top: elY - window.innerHeight / 2,
-			// behavior: "smooth",
+			behavior: "smooth",
 		});
 	}
 }
