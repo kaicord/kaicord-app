@@ -24,5 +24,12 @@ svg {
 
 .focus {
   background: linear-gradient(to bottom right, var(--body), var(--glow));
+}
+
+h2.focus {
+  background: var(--glow);
+}
+
+[tabcol]:focus, [tabrow]:focus {
   outline: none;
 }

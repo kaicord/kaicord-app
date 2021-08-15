@@ -12,7 +12,7 @@ import { Guilds } from "./views/Guilds";
 import { Channel } from "./views/Channel";
 import { DMs } from "./views/DMs";
 
-import ConcordClient from "concord/src/client";
+import { Client as ConcordClient } from "concord";
 
 window.onerror = function (msg, url, linenumber) {
 	alert(
@@ -21,15 +21,11 @@ window.onerror = function (msg, url, linenumber) {
 	return true;
 };
 
-console.log(123);
-
 function App() {
 	console.log("Running app");
 
 	const [accountData, setAccountData] = useState(false);
 	useEffect(() => {
-		console.log("R");
-
 		const client = new ConcordClient();
 
 		client.onTwoFactorAuthenticationRequired(() => {
@@ -51,7 +47,6 @@ function App() {
 		});
 
 		if (!localStorage.getItem("discord-token")) {
-			console.log(4);
 			const email = prompt("Email");
 			const password = prompt("Password");
 			client.login(email, password);
@@ -74,7 +69,10 @@ function App() {
 		return (
 			<Switch>
 				<Route path="/guilds">
-					<Guilds groups={accountData.getGuilds()} />
+					<Guilds
+						guilds={accountData.getGuilds()}
+						folders={accountData.getUserSettings().guild_folders}
+					/>
 				</Route>
 				<Route path="/dms">
 					<DMs />
@@ -92,7 +90,7 @@ function App() {
 			</Switch>
 		);
 	} else {
-		return <h1>Loading...</h1>;
+		return <h1 className="w-full p-6 py-24 text-center">Loading...</h1>;
 	}
 }
 

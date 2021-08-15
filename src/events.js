@@ -17,6 +17,9 @@ function onKeyDown(evt) {
 		focusedCol = 0;
 		focusedRow--;
 		updateFocus();
+	} else if (evt.key === "Enter") {
+		evt.preventDefault();
+		document.querySelector(".focus").click();
 	} else if (evt.key === "Backspace") {
 		evt.preventDefault();
 		let loc = location.href;
@@ -44,29 +47,32 @@ function updateFocus() {
 	// Find relevant focused row
 	const focusRows = document.querySelectorAll("[tabrow]");
 	while (focusedRow < 0) focusedRow = focusRows.length + focusedRow;
+	focusedRow = focusedRow % focusRows.length || 0;
 	const focusRow = focusRows[focusedRow % focusRows.length];
+
+	console.log(focusedRow, focusedCol);
 
 	// Find focused column
 	if (focusRow) {
 		const focusCols = focusRow.querySelectorAll("[tabcol]");
 		while (focusedCol < 0) focusedCol = focusCols.length + focusedCol;
-		const focusCol = focusCols[focusedCol % focusCols.length];
+		let focusCol = focusCols[focusedCol % focusCols.length];
 
-		// Focus on column
-		if (focusCol) {
-			focusCol.focus();
-			focusCol.classList.add("focus");
+		if (!focusCol) focusCol = focusRow;
+		// Focus on selected element
+		focusCol.classList.add("focus");
+		focusCol.focus();
+		console.log(focusCol);
 
-			const rect = focusCol.getBoundingClientRect();
-			const elY =
-				rect.top - document.body.getBoundingClientRect().top + rect.height / 2;
+		const rect = focusCol.getBoundingClientRect();
+		const elY =
+			rect.top - document.body.getBoundingClientRect().top + rect.height / 2;
 
-			window.scrollTo({
-				left: 0,
-				top: elY - window.innerHeight / 2,
-				behavior: "smooth",
-			});
-		}
+		window.scrollTo({
+			left: 0,
+			top: elY - window.innerHeight / 2,
+			// behavior: "smooth",
+		});
 	}
 }
 
