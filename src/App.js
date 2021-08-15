@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
 import "./App.css";
 
-import { Switch, Route, useLocation } from "react-router-dom";
+import { Switch, Route, useLocation, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { useGlobalDOMEvents, resetFocus } from "./events";
@@ -11,6 +11,7 @@ import { Credits } from "./views/Credits";
 import { Guilds } from "./views/Guilds";
 import { Channel } from "./views/Channel";
 import { DMs } from "./views/DMs";
+import { Guild } from "./views/Guild";
 
 import { Client as ConcordClient } from "concord";
 
@@ -79,6 +80,9 @@ function App() {
 				</Route>
 				<Route path="/channel/:id">
 					<Channel />
+				</Route>
+				<Route path="/guild/:id">
+					<Guild guilds={accountData.getGuilds()} />
 				</Route>
 				<Route path="/credits">
 					<Credits />

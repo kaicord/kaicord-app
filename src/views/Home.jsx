@@ -6,7 +6,7 @@ export function Home() {
 	return (
 		<div>
 			<List title="Chat">
-				<ListItemWithArrow img="/silk/icons/comment.png" to="/dms">
+				<ListItemWithArrow img="/silk/icons/comments.png" to="/dms">
 					Dms
 				</ListItemWithArrow>
 				<ListItemWithArrow img="/silk/icons/application.png" to="/guilds">

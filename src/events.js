@@ -50,8 +50,6 @@ function updateFocus() {
 	focusedRow = focusedRow % focusRows.length || 0;
 	const focusRow = focusRows[focusedRow % focusRows.length];
 
-	console.log(focusedRow, focusedCol);
-
 	// Find focused column
 	if (focusRow) {
 		const focusCols = focusRow.querySelectorAll("[tabcol]");

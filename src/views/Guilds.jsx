@@ -18,7 +18,7 @@ export function Guilds(props) {
 					<List collapsible={group.guilds.length > 1} title={group.guilds.length > 1 ? group.name : undefined} key={group.guild_ids.join(',')}>
 						{group.guilds.map(guild => {
 							return (
-								<ListItemWithArrow to="/channel/whatever" key={guild.getID()} img={guild.getIconUrl()}>
+								<ListItemWithArrow to={`/guild/${guild.getID()}`} key={guild.getID()} img={guild.getIconUrl()}>
 									<div>
 										<p>{guild.getName()}</p>
 									</div>
