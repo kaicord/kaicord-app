@@ -17,6 +17,12 @@ function onKeyDown(evt) {
 		focusedCol = 0;
 		focusedRow--;
 		updateFocus();
+	} else if (evt.key === "ArrowRight") {
+		focusedCol++;
+		updateFocus();
+	} else if (evt.key === "ArrowLeft") {
+		focusedCol--;
+		updateFocus();
 	} else if (evt.key === "Enter") {
 		evt.preventDefault();
 		document.querySelector(".focus").click();
@@ -52,10 +58,10 @@ export function updateFocus() {
 
 	// Find focused column
 	if (focusRow) {
-		const focusCols = focusRow.querySelectorAll("[tabcol]");
+		const focusCols = focusRow.querySelectorAll("[tabcol], a");
 		while (focusedCol < 0) focusedCol = focusCols.length + focusedCol;
 		let focusCol = focusCols[focusedCol % focusCols.length];
-
+		console.log(focusCol);
 		if (!focusCol) focusCol = focusRow;
 		// Focus on selected element
 		focusCol.classList.add("focus");

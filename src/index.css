@@ -13,6 +13,7 @@ body {
   text-transform: uppercase;
   background: var(--body);
   color: var(--text);
+  word-break: break-word;
 }
 
 svg {
@@ -36,4 +37,14 @@ h2.focus {
 
 .is-image-attachment {
   max-height: 80vh;
+}
+
+*:focus {
+  outline: none;
+}
+
+a[class="focus"]:focus {
+  background: var(--text);
+  color: var(--body);
+  border-radius: 4px;
 }

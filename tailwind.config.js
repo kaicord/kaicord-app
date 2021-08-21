@@ -6,6 +6,7 @@ module.exports = {
 			colors: {
 				fade: "rgba(0, 0, 0, 0.3)",
 				border: "#525252",
+				content: "#0d0d0d",
 			},
 			fontSize: {
 				xss: "0.6rem",

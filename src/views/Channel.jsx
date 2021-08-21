@@ -1,14 +1,14 @@
 
 import { useState, useEffect } from "react";
 import { MessageList, Message } from "../components/Messages";
-import { Attachment } from "../components/Attachment";
+import { Attachment, Embed } from "../components/Attachment";
+import { Loading } from "../components/Loading";
 import { resetFocus } from "../events";
 
-import { Loading } from "../components/Loading";
 import { useParams } from "react-router-dom";
+import { markdownToHtml } from '../fromMarkdown'
 
 export function Channel(props) {
-
 
 	const [messages, setMessages] = useState([])
 	const [loading, setLoading] = useState(true)
@@ -23,7 +23,7 @@ export function Channel(props) {
 				after: Date.now(),
 				around: Date.now() * 10
 			})).sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime())
-			console.log(msg);
+
 			setMessages(msg)
 			setLoading(false);
 
@@ -32,6 +32,17 @@ export function Channel(props) {
 		doMessageUpdate()
 	}, [params, props])
 
+	function getSubtitle(msg) {
+		if (msg.type === 7) {
+			return "joined the server"
+		} else if (msg.type === 6) {
+			return "pinned a message"
+		} else if (msg.type === 19) {
+			return `replying to ${msg.referenced_message.author.username}: ${msg.referenced_message.content}`
+		}
+		return ""
+	}
+
 	return (
 		<div>
 			{loading ?
@@ -39,10 +50,17 @@ export function Channel(props) {
 				<MessageList>
 					{messages.map((msg, i) => {
 						return (
-							<Message key={i} name={msg.author.username}>
-								{msg.type === 7 ? 'joined the server' : msg.content}
+							<Message key={i} subtitle={getSubtitle(msg)} name={msg.author.username} msg={msg}>
+								<span dangerouslySetInnerHTML={{
+									__html: markdownToHtml(
+										msg.type === 7 ? 'joined the server' : msg.content
+									)
+								}}></span>
 								{msg.attachments.map(att => {
 									return <Attachment attachment={att} />
+								})}
+								{msg.embeds.map(att => {
+									return <Embed embed={att} />
 								})}
 							</Message>
 						)
