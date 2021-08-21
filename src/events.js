@@ -39,7 +39,7 @@ function onKeyUp() {}
  * You have rows which you can navigate with up/down,
  * and you have cols you can navigate with left/right
  */
-function updateFocus() {
+export function updateFocus() {
 	[...document.querySelectorAll(".focus")].forEach((el) =>
 		el.classList.remove("focus")
 	);
@@ -75,7 +75,7 @@ function updateFocus() {
 
 export function resetFocus() {
 	focusedCol = 0;
-	if (location.href.includes("/channel/")) {
+	if (document.querySelector(".is-message")) {
 		focusedRow = document.querySelectorAll(".is-message").length - 1;
 	} else {
 		focusedRow = 0;

@@ -53,14 +53,14 @@ export function Guild(props) {
 			</List>
 			{categories.map(category => {
 				return (
-					<List title={category.name} key={category.id} doSpacing="true">
+					<List title={category.name} key={category.id || Math.random()} doSpacing="true">
 						{category.channels.map(channel => {
 							return (
 								<ListItemWithArrow
 									disabled={channel.getType() !== channel.TYPE_GUILD_TEXT}
-									to="/"
+									to={`/ch/${channel.getID()}`}
 									img={channel.getType() === channel.TYPE_GUILD_TEXT ? '/silk/icons/comment.png' : '/silk/icons/sound.png'}
-									key={channel.getID()}
+									key={channel.getID() || Math.random()}
 								>
 									<div className="w-full">{channel.getName()}</div>
 								</ListItemWithArrow>

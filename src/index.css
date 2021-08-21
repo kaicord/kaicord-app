@@ -33,3 +33,7 @@ h2.focus {
 [tabcol]:focus, [tabrow]:focus {
   outline: none;
 }
+
+.is-image-attachment {
+  max-height: 80vh;
+}

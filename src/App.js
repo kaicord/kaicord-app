@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
 import "./App.css";
 
-import { Switch, Route, useLocation, useParams } from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { useGlobalDOMEvents, resetFocus } from "./events";
@@ -12,6 +12,8 @@ import { Guilds } from "./views/Guilds";
 import { Channel } from "./views/Channel";
 import { DMs } from "./views/DMs";
 import { Guild } from "./views/Guild";
+
+import { Loading } from "./components/Loading";
 
 import { Client as ConcordClient } from "concord";
 
@@ -25,7 +27,8 @@ window.onerror = function (msg, url, linenumber) {
 function App() {
 	console.log("Running app");
 
-	const [accountData, setAccountData] = useState(false);
+	const [client, setClient] = useState(false);
+
 	useEffect(() => {
 		const client = new ConcordClient();
 
@@ -41,7 +44,7 @@ function App() {
 		client.onReady(() => {
 			localStorage.setItem("discord-token", client.getAuthorizationToken());
 			// do stuff, client is connected and logged in
-			setAccountData(client);
+			setClient(client);
 		});
 
 		if (!localStorage.getItem("discord-token")) {
@@ -51,7 +54,9 @@ function App() {
 		} else {
 			client.ghostLogin(localStorage.getItem("discord-token"));
 		}
-	}, []);
+
+		console.log(client);
+	}, [client]);
 
 	useGlobalDOMEvents();
 
@@ -63,23 +68,27 @@ function App() {
 		resetFocus();
 	}, [location]);
 
-	if (accountData) {
+	if (client) {
+		console.log(5);
 		return (
 			<Switch>
+				{/* <Route path="/channel/:id">
+					<Channel />
+				</Route> */}
 				<Route path="/guilds">
 					<Guilds
-						guilds={accountData.getGuilds()}
-						folders={accountData.getUserSettings().guild_folders}
+						guilds={client.getGuilds()}
+						folders={client.getUserSettings().guild_folders}
 					/>
 				</Route>
 				<Route path="/dms">
 					<DMs />
 				</Route>
-				<Route path="/channel/:id">
-					<Channel />
-				</Route>
 				<Route path="/guild/:id">
-					<Guild guilds={accountData.getGuilds()} />
+					<Guild guilds={client.getGuilds()} />
+				</Route>
+				<Route path="/ch/:id">
+					<Channel client={client} />
 				</Route>
 				<Route path="/credits">
 					<Credits />
@@ -91,7 +100,7 @@ function App() {
 			</Switch>
 		);
 	} else {
-		return <h1 className="w-full p-6 py-24 text-center">Loading...</h1>;
+		return <Loading />;
 	}
 }
 
