@@ -48,3 +48,18 @@ a[class="focus"]:focus {
   color: var(--body);
   border-radius: 4px;
 }
+
+p {
+  max-width: 100%;
+  word-break: break-word;
+  white-space: normal;
+}
+
+pre {
+  max-width: 95vw;
+  overflow-x: auto;
+  background: #202328;
+  color: white;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
