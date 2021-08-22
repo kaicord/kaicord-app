@@ -79,6 +79,18 @@ export function updateFocus() {
 	}
 }
 
+export function scrollToEl(el) {
+	const rows = [...document.querySelectorAll("[tabrow]")];
+	console.log(el, rows);
+	if (rows.indexOf(el) > -1) {
+		focusedRow = rows.indexOf(el);
+		focusedCol = 0;
+		updateFocus();
+	} else {
+		console.log("Row not found");
+	}
+}
+
 export function resetFocus() {
 	focusedCol = 0;
 	if (document.querySelector(".is-message")) {
