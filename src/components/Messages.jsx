@@ -20,7 +20,7 @@ export function Message(props) {
 					<span>{props.msg.referenced_message.content}</span>
 				</div> : ''}
 				<p class="flex space-x-2 items-center">
-					<img className="w-4 h-4 block rounded" src={`https://cdn.discordapp.com/avatars/${props.msg.author.id}/${props.msg.author.avatar}.png?size=16`} alt="" />
+					<img className="w-4 h-4 block rounded" src={`https://cdn.discordapp.com/avatars/${props.msg.author.id}/${props.msg.author.avatar}.gif?size=16`} onError={(e) => e.currentTarget.src = `https://cdn.discordapp.com/avatars/${props.msg.author.id}/${props.msg.author.avatar}.webp?size=16`} alt="" />
 					<strong>{props.name}</strong>{props.subtitle ? <span className="ml-3">{props.subtitle}</span> : ''}
 				</p>
 				<div>{props.children}</div>
