@@ -37,8 +37,6 @@ export function Channel(props) {
 			return "joined the server"
 		} else if (msg.type === 6) {
 			return "pinned a message"
-		} else if (msg.type === 19) {
-			return `replying to ${msg.referenced_message.author.username}: ${msg.referenced_message.content}`
 		}
 		return ""
 	}
@@ -52,9 +50,7 @@ export function Channel(props) {
 						return (
 							<Message key={i} subtitle={getSubtitle(msg)} name={msg.author.username} msg={msg}>
 								<span dangerouslySetInnerHTML={{
-									__html: markdownToHtml(
-										msg.type === 7 ? 'joined the server' : msg.content
-									)
+									__html: markdownToHtml(msg.content)
 								}}></span>
 								{msg.attachments.map(att => {
 									return <Attachment attachment={att} />
