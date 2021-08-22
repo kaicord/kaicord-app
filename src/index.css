@@ -49,6 +49,10 @@ a[class="focus"]:focus {
   border-radius: 4px;
 }
 
+.attachment-wrapper.focus {
+  opacity: 0.5;
+}
+
 p {
   max-width: 100%;
   word-break: break-word;

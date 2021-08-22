@@ -52,9 +52,11 @@ export function Channel(props) {
 								<span dangerouslySetInnerHTML={{
 									__html: markdownToHtml(msg.content)
 								}}></span>
-								{msg.attachments.map(att => {
-									return <Attachment attachment={att} />
-								})}
+								<div className={`${msg.attachments.length > 0 ? 'flex' : 'hidden'} flex-wrap -mx-1 overflow-hidden my-6`}>
+									{msg.attachments.map(att => {
+										return <Attachment attachment={att} />
+									})}
+								</div>
 								{msg.embeds.map(att => {
 									return <Embed embed={att} />
 								})}
