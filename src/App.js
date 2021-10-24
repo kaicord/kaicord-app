@@ -75,8 +75,6 @@ function App() {
 	if (error) {
 		return <Loading title={error} />;
 	} else if (client) {
-		console.log(5);
-		console.log(client.getGuilds());
 		return (
 			<Switch>
 				<Route path="/guilds">
@@ -99,9 +97,6 @@ function App() {
 				</Route>
 				<Route path="/settings">Settings page</Route>
 				<Route path="/">
-					<p class="is-message">
-						hoi hoihoihoihoihoihoihoihoihoihoihoihoihoihoihoihoihoihoihoihoihoi
-					</p>
 					<Home />
 				</Route>
 			</Switch>

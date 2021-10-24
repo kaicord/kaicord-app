@@ -1,5 +1,7 @@
 import { markdownToHtml } from '../fromMarkdown'
 
+import { Video } from './Video'
+
 export function Attachment(props) {
 	const att = props.attachment;
 
@@ -7,22 +9,18 @@ export function Attachment(props) {
 
 	if ((att.content_type || "").startsWith('video')) {
 		return (
-			<a target="_blank" href={att.url} rel="noreferrer" className="mt-3 max-h-80 overflow-hidden" tabcol="true">
-				<div className="relative attachment-wrapper">
-					<div className="w-full" style={{ 'paddingBottom': '100%' }}></div>
-					<video className="absolute top-0 left-0 is-image-attachment w-full h-full rounded object-cover bg-fade border border-border" src={att.url} />
-				</div>
-			</a>
+			<div className="attachment-wrapper w-full mt-3 overflow-hidden">
+				<Video src={att.url} />
+			</div>
 		)
 	}
 
 	if (att.url) {
 		return (
-			<a target="_blank" href={att.url} rel="noreferrer" className="mt-3 max-h-80 overflow-hidden attachment-wrapper" tabcol="true">
+			<a target="_blank" href={att.url} rel="noreferrer" className="w-full mt-3 overflow-hidden attachment-wrapper" tabcol="true">
 				<div className="relative">
-					<div className="w-full" style={{ 'paddingBottom': '100%' }}></div>
 					<img
-						className="absolute top-0 left-0 is-image-attachment w-full h-full rounded object-cover bg-fade border border-border"
+						className="is-image-attachment w-full h-full rounded object-cover bg-fade border border-border"
 						src={att.url}
 						alt="" />
 				</div>
