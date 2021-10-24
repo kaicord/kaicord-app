@@ -10,7 +10,6 @@ export function MessageList(props) {
 }
 
 export function Message(props) {
-	console.log(props.msg)
 	return (
 		<div tabrow="true" id={props.msg.id}>
 			<div className="is-message border-t border-border normal-case p-1 px-2" tabcol="true">
@@ -19,10 +18,8 @@ export function Message(props) {
 					<span>{props.msg.referenced_message.author.username}:</span>
 					<span>{props.msg.referenced_message.content}</span>
 				</div> : ''}
-				<p class="flex space-x-2 items-center">
-					<img className="w-4 h-4 block rounded" src={`https://cdn.discordapp.com/avatars/${props.msg.author.id}/${props.msg.author.avatar}.gif?size=16`} onError={(e) => {
-						if (e.currentTarget.src.includes('.gif')) e.currentTarget.src = `https://cdn.discordapp.com/avatars/${props.msg.author.id}/${props.msg.author.avatar}.webp?size=16`
-					}} alt="" />
+				<p className="flex space-x-2 items-center">
+					<img className="w-4 h-4 block rounded" src={`https://cdn.discordapp.com/avatars/${props.msg.author.id}/${props.msg.author.avatar}.jpg?size=16`} alt="" />
 					<strong>{props.name}</strong>{props.subtitle ? <span className="ml-3">{props.subtitle}</span> : ''}
 				</p>
 				<div>{props.children}</div>

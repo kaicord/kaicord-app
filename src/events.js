@@ -61,7 +61,7 @@ export function updateFocus() {
 		const focusCols = focusRow.querySelectorAll("[tabcol], a");
 		while (focusedCol < 0) focusedCol = focusCols.length + focusedCol;
 		let focusCol = focusCols[focusedCol % focusCols.length];
-		// console.log(focusCol);
+
 		if (!focusCol) focusCol = focusRow;
 		// Focus on selected element
 		focusCol.classList.add("focus");

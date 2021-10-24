@@ -28,6 +28,7 @@ function App() {
 	console.log("Running app");
 
 	const [client, setClient] = useState(false);
+	const [error, setError] = useState("");
 
 	useEffect(() => {
 		const client = new ConcordClient();
@@ -50,7 +51,10 @@ function App() {
 		if (!localStorage.getItem("discord-token")) {
 			const email = prompt("Email");
 			const password = prompt("Password");
-			client.login(email, password);
+
+			client.login(email, password).catch((err) => {
+				setError(err.toString().split("\n")[0].trim());
+			});
 		} else {
 			client.ghostLogin(localStorage.getItem("discord-token"));
 		}
@@ -68,13 +72,13 @@ function App() {
 		resetFocus();
 	}, [location]);
 
-	if (client) {
+	if (error) {
+		return <Loading title={error} />;
+	} else if (client) {
 		console.log(5);
+		console.log(client.getGuilds());
 		return (
 			<Switch>
-				{/* <Route path="/channel/:id">
-					<Channel />
-				</Route> */}
 				<Route path="/guilds">
 					<Guilds
 						guilds={client.getGuilds()}
@@ -95,6 +99,9 @@ function App() {
 				</Route>
 				<Route path="/settings">Settings page</Route>
 				<Route path="/">
+					<p class="is-message">
+						hoi hoihoihoihoihoihoihoihoihoihoihoihoihoihoihoihoihoihoihoihoihoi
+					</p>
 					<Home />
 				</Route>
 			</Switch>

@@ -55,7 +55,7 @@ a[class="focus"]:focus {
 
 p {
   max-width: 100%;
-  word-break: break-word;
+  word-wrap: break-word;
   white-space: normal;
 }
 
@@ -64,6 +64,6 @@ pre {
   overflow-x: auto;
   background: #202328;
   color: white;
-  word-break: break-word;
+  word-wrap: break-word;
   white-space: pre-wrap;
 }
