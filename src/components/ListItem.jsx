@@ -2,6 +2,11 @@
 import { Link } from "react-router-dom"
 
 import SVG from "react-inlinesvg";
+import { getFallbackPicture } from "../getFallbackPicture";
+
+function didError(e) {
+	e.target.src = getFallbackPicture()
+}
 
 export function ListItem(props) {
 
@@ -10,7 +15,7 @@ export function ListItem(props) {
 			className="text-xs w-full py-2 px-2 flex justify-between items-center space-x-4"
 		>
 			{props.img ?
-				<img alt="" src={props.img} className="w-5 h-5 object-contain" />
+				<img alt="" onError={didError} src={props.img} className="w-5 h-5 object-contain" />
 				: ''}
 			{props.children}
 		</div>

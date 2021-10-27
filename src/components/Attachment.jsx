@@ -1,11 +1,14 @@
 import { markdownToHtml } from '../fromMarkdown'
+import { getFallbackPicture } from '../getFallbackPicture';
 
 import { Video } from './Video'
 
+function didError(e) {
+	e.target.src = getFallbackPicture()
+}
+
 export function Attachment(props) {
 	const att = props.attachment;
-
-	console.log(att)
 
 	if ((att.content_type || "").startsWith('video')) {
 		return (
@@ -34,18 +37,26 @@ export function Attachment(props) {
 export function Embed(props) {
 	const embed = props.embed
 
+	if (embed.type === "image") {
+		return (
+			<div className="w-full mt-3 overflow-hidden">
+				<img className="max-w-full rounded object-cover bg-fade border border-border" src={embed.url} alt="" />
+			</div>
+		)
+	}
+
 	let profile;
 	if (embed.author) {
 		profile = (
 			<div className="flex space-x-3 items-center mt-2">
-				<img className="w-5 h-5 rounded-full block" src={embed.author.icon_url} alt="" />
+				{embed.author.icon_url ? <img className="w-5 h-5 rounded-full block" src={embed.author.icon_url} onError={didError} alt="" /> : ''}
 				<span>{embed.author.name}</span>
 			</div>
 		)
 	}
 
 	let video;
-	if (embed.video) {
+	if (embed.video && !embed.video.url.includes("soundcloud")) {
 		video = (
 			<div>
 				<video src={embed.video.url} autoPlay muted loop />

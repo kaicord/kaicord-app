@@ -47,6 +47,14 @@ export function Channel(props) {
 				<Loading title="Loading channel..." /> :
 				<MessageList>
 					{messages.map((msg, i) => {
+
+						// Remove all image links from the message content
+						for (let embed of msg.embeds) {
+							if (embed.type === "image") {
+								msg.content = msg.content.replace(embed.url, "").replace(/ {2}/g, "")
+							}
+						}
+
 						return (
 							<Message key={i} subtitle={getSubtitle(msg)} name={msg.author.username} msg={msg}>
 								<span dangerouslySetInnerHTML={{
