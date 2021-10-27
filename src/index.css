@@ -25,6 +25,13 @@ svg {
 
 .focus {
   background: linear-gradient(to bottom right, var(--body), var(--glow));
+  border-radius: 3px;
+}
+
+.is-link.focus {
+  display: block;
+  padding: 2px;
+  border: 1px solid var(--glow);
 }
 
 h2.focus {

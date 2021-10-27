@@ -33,7 +33,6 @@ export function Attachment(props) {
 
 export function Embed(props) {
 	const embed = props.embed
-	console.log(embed)
 
 	let profile;
 	if (embed.author) {
